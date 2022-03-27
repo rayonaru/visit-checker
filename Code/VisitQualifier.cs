@@ -9,15 +9,19 @@ namespace VisitChecker.Code
     {
         public static List<Visit> Qualifie(List<History> history, List<ControlZone> controlZones, DateTime startDate, DateTime endDate)
         {
-            var tempHistory = new List<History>();
             var visits = new List<Visit>();
 
             foreach (var controlZone in controlZones)
             {
-                foreach (var hist in history.Where(x => x.Date >= startDate && x.Date <= endDate))
+                var tempHistory = new List<History>();
+
+                var filteredHistory = history
+                    .Where(x => x.Date >= startDate)
+                    .Where(x => x.Date <= endDate);
+
+                foreach (var hist in filteredHistory)
                 {
                     var distance = GetGeoDistance(hist.Longitude, hist.Latitude, controlZone.Longitude, controlZone.Latitude);
-
                     if (distance <= controlZone.Radius)
                         tempHistory.Add(hist);
                 }
@@ -42,7 +46,7 @@ namespace VisitChecker.Code
                 OutDate = outDate,
                 MaxSpeed = maxSpeed
             };
-            
+
             return visit;
         }
 
