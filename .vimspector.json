@@ -1,0 +1,14 @@
+{
+  "configurations": {
+    "launch - netcoredbg": {
+      "adapter": "netcoredbg",
+      "configuration": {
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceRoot}/bin/Debug/netcoreapp3.1/VisitChecker.dll",
+        "stopAtEntry": true,
+        "cwd": "${workspaceRoot}"
+      }
+    }
+  }
+}
