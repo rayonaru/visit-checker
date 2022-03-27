@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using VisitChecker.Abstractions;
 using VisitChecker.Code;
 using VisitChecker.Models;
 
@@ -15,8 +14,8 @@ namespace VisitChecker
             var startDate = DateTime.Parse("2016.04.01 00:00:00");
             var endDate = DateTime.Parse("2016.10.01 23:59:59");
 
-            IParser<History> historyParser = new HistoryParser();
-            IParser<ControlZone> controlZonesParser = new ControlZonesParser();
+            var historyParser = new HistoryParser();
+            var controlZonesParser = new ControlZonesParser();
 
             var historyReader = new Reader<History>(historyParser);
             var controlZonesReader = new Reader<ControlZone>(controlZonesParser);
