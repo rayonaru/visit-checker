@@ -9,6 +9,9 @@ namespace VisitChecker.Code
     {
         public List<History> Parse(string[] data)
         {
+            if (data.Length == 0)
+                throw new Exception("Нет данных истории");
+
             var history = new List<History>();
 
             foreach (var line in data)

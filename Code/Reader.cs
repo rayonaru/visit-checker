@@ -23,6 +23,9 @@ namespace VisitChecker.Code
 
         private string[] ReadFile(string filePath)
         {
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException($"Файл по пути {filePath} не найден");
+
             var data = File.ReadAllLines(filePath);
 
             return data;

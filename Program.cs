@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using VisitChecker.Code;
 using VisitChecker.Models;
 
@@ -20,17 +21,27 @@ namespace VisitChecker
             var historyReader = new Reader<History>(historyParser);
             var controlZonesReader = new Reader<ControlZone>(controlZonesParser);
 
-            var history = historyReader.Read(historyPath);
-            var controlZones = controlZonesReader.Read(controlZonesPath);
+            try
+            {
+                var history = historyReader.Read(historyPath);
+                var controlZones = controlZonesReader.Read(controlZonesPath);
+                var visits = VisitQualifier.Qualifie(history, controlZones, startDate, endDate);
 
-            var visits = VisitQualifier.Qualifie(history, controlZones, startDate, endDate);
-
-            PrintVisits(visits);
+                PrintVisits(visits);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private static void PrintVisits(List<Visit> visits)
         {
-            foreach(var visit in visits)
+            foreach (var visit in visits)
                 Console.WriteLine($"{visit.Name};{visit.EnterDate};{visit.OutDate};{visit.MaxSpeed}");
         }
     }

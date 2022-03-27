@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using VisitChecker.Abstractions;
 using VisitChecker.Models;
@@ -8,6 +9,9 @@ namespace VisitChecker.Code
     {
         public List<ControlZone> Parse(string[] data)
         {
+            if (data.Length == 0)
+                throw new Exception("Нет данных контрольных зон");
+
             var controlZones = new List<ControlZone>();
 
             foreach (var line in data)
