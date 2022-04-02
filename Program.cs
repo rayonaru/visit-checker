@@ -18,7 +18,6 @@ namespace VisitChecker
             var historyParser = new HistoryParser();
             var controlZonesParser = new ControlZonesParser();
 
-            var test = new Reader<History>(null);
             var historyReader = new Reader<History>(historyParser);
             var controlZonesReader = new Reader<ControlZone>(controlZonesParser);
 
