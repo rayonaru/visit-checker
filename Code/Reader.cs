@@ -4,7 +4,8 @@ using VisitChecker.Abstractions;
 
 namespace VisitChecker.Code
 {
-    public class Reader<T>
+    public class Reader<T> 
+        where T : IParserModel
     {
         private IParser<T> _parser;
 

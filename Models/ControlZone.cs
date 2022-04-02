@@ -1,6 +1,8 @@
+using VisitChecker.Abstractions;
+
 namespace VisitChecker.Models
 {
-    public class ControlZone
+    public class ControlZone : IParserModel
     {
         public string Name { get; set; }
         public double Longitude { get; set; }

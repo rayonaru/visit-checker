@@ -1,8 +1,9 @@
 using System;
+using VisitChecker.Abstractions;
 
 namespace VisitChecker.Models
 {
-    public class History
+    public class History : IParserModel
     {
         public DateTime Date { get; set; }  
         public int Speed { get; set; }
